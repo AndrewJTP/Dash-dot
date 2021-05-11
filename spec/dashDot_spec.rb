@@ -17,5 +17,73 @@ RSpec.describe "dash dot" do
     it "deberia devolver el largo 5 del tablero si le pasamos 3,5" do
         expect(Tablero.new(3,5).getLargo).to eq 5
     end    
+    it "deberia devolver true si el auto fue ingresado correctamente en el tablero" do
+        tablero=Tablero.new(3,5)
+        auto=Auto.new('N',1,2)
+        expect(tablero.addAuto(auto)).to eq true
+    end
+    it "deberia devolver posicion y+1 <3> si le pasamos el comando avanzar "do
+        tablero=Tablero.new(3,5)
+        auto=Auto.new('N',1,2)
+        tablero.addAuto(auto)
+        auto.avanzar(tablero.getLargo,tablero.getAlto)
+        expect(auto.getPosicion_y).to eq 3
+    end
+    it "deberia devolver posicion x-1 <1> si le pasamos el comando avanzar "do
+        tablero=Tablero.new(3,5)
+        auto=Auto.new('O',2,2)
+        tablero.addAuto(auto)
+        auto.avanzar(tablero.getLargo,tablero.getAlto)
+        expect(auto.getPosicion_x).to eq 1
+    end
+    it "deberia devolver posicion x+1 <2> si le pasamos el comando avanzar "do
+        tablero=Tablero.new(3,5)
+        auto=Auto.new('E',1,2)
+        tablero.addAuto(auto)
+        auto.avanzar(tablero.getLargo,tablero.getAlto)
+        expect(auto.getPosicion_x).to eq 2
+    end
+    it "deberia devolver posicion y-1 <1> si le pasamos el comando avanzar "do
+        tablero=Tablero.new(3,5)
+        auto=Auto.new('S',1,2)
+        tablero.addAuto(auto)
+        auto.avanzar(tablero.getLargo,tablero.getAlto)
+        expect(auto.getPosicion_y).to eq 1
+    end
+
+    it "deberia devolver posicion x sin moverse <1> si le pasamos el comando avanzar "do
+        tablero=Tablero.new(3,5)
+        auto=Auto.new('O',1,2)
+        tablero.addAuto(auto)
+        auto.avanzar(tablero.getLargo,tablero.getAlto)
+        expect(auto.getPosicion_x).to eq 1
+    end  
+    it "deberia devolver posicion x sin moverse <3> si le pasamos el comando avanzar "do
+        tablero=Tablero.new(3,5)
+        auto=Auto.new('E',3,2)
+        tablero.addAuto(auto)
+        auto.avanzar(tablero.getLargo,tablero.getAlto)
+        expect(auto.getPosicion_x).to eq 3
+    end
+    it "deberia devolver E si le pasamos un auto orientaion N y el comando girarDerecha()" do
+        auto=Auto.new('N',3,2)
+        auto.girarDerecha()
+        expect(auto.getOrientacion).to eq 'E' 
+    end
+    it "deberia devolver S si le pasamos un auto orientaion E y el comando girarDerecha()" do
+        auto=Auto.new('E',3,2)
+        auto.girarDerecha()
+        expect(auto.getOrientacion).to eq 'S' 
+    end
+    it "deberia devolver O si le pasamos un auto orientaion S y el comando girarDerecha()" do
+        auto=Auto.new('S',3,2)
+        auto.girarDerecha()
+        expect(auto.getOrientacion).to eq 'O' 
+    end
+    it "deberia devolver N si le pasamos un auto orientaion O y el comando girarDerecha()" do
+        auto=Auto.new('O',3,2)
+        auto.girarDerecha()
+        expect(auto.getOrientacion).to eq 'N' 
+    end
     
 end

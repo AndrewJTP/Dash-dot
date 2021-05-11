@@ -15,6 +15,38 @@ class Auto
     def getPosicion_y()
         return @posicion_y
     end
+    def girarDerecha()
+        case @orientacion
+            when 'N'
+                @orientacion='E'
+            when 'E'
+                @orientacion='S'
+            when 'S'
+                @orientacion='O'
+            when 'O'
+                @orientacion='N'
+        end
+    end
+    def avanzar(limite_alto, limite_largo)
+        case @orientacion
+            when 'N'
+                if(@posicion_y+1<=limite_alto)
+                    @posicion_y=@posicion_y+1
+                end
+            when 'S'
+                if(@posicion_y-1>0)
+                    @posicion_y=@posicion_y-1
+                end
+            when 'O'
+                if(@posicion_x-1>0)
+                    @posicion_x=@posicion_x-1
+                end
+            when 'E'
+                if(@posicion_x+1<=limite_largo)
+                    @posicion_x=@posicion_x+1
+                end
+        end
+    end
 
 end  
    
