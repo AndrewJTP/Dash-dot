@@ -27,6 +27,18 @@ class Auto
                 @orientacion='N'
         end
     end
+    def girarIzquierda()
+        case @orientacion
+            when 'N'
+                @orientacion='O'
+            when 'E'
+                @orientacion='N'
+            when 'S'
+                @orientacion='E'
+            when 'O'
+                @orientacion='S'
+        end
+    end
     def avanzar(limite_alto, limite_largo)
         case @orientacion
             when 'N'
