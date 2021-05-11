@@ -1,7 +1,7 @@
 require './lib/auto.rb'
 class Tablero   
     # método inicializar clase
-    def initialize(alto, largo)  
+    def initialize(largo, alto)  
         # atributos           
         @alto = alto 
         @largo=largo
@@ -16,8 +16,13 @@ class Tablero
     end
 
     def addAuto(auto)
-        @auto=auto
-        return true
+        if(auto.getPosicion_x>@largo||auto.getPosicion_y>@alto ||auto.getPosicion_x<1||auto.getPosicion_y<1)
+            return false            
+        else
+            @auto=auto
+            return true
+        end
+        
     end
 
 end  

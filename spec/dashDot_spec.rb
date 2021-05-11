@@ -11,16 +11,21 @@ RSpec.describe "dash dot" do
     it "deberia devolver la posicion Y 2 del auto creado si le pasamos 'N' 1,2" do
         expect(Auto.new('N',1,2).getPosicion_y).to eq 2 
     end
-    it "deberia devolver la altura 3 del tablero si le pasamos 3,5" do
-        expect(Tablero.new(3,5).getAlto).to eq 3 
+    it "deberia devolver la altura 5 del tablero si le pasamos 3,5" do
+        expect(Tablero.new(3,5).getAlto).to eq 5 
     end
-    it "deberia devolver el largo 5 del tablero si le pasamos 3,5" do
-        expect(Tablero.new(3,5).getLargo).to eq 5
+    it "deberia devolver el largo 3 del tablero si le pasamos 3,5" do
+        expect(Tablero.new(3,5).getLargo).to eq 3
     end    
     it "deberia devolver true si el auto fue ingresado correctamente en el tablero" do
         tablero=Tablero.new(3,5)
         auto=Auto.new('N',1,2)
         expect(tablero.addAuto(auto)).to eq true
+    end
+    it "deberia devolver false si el auto no fue ingresado correctamente en el tablero" do
+        tablero=Tablero.new(3,5)
+        auto=Auto.new('N',5,2)
+        expect(tablero.addAuto(auto)).to eq false
     end
     it "deberia devolver posicion y+1 <3> si le pasamos el comando avanzar "do
         tablero=Tablero.new(3,5)
