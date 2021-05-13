@@ -1,6 +1,7 @@
 require './lib/auto.rb'
 require './lib/tablero.rb'
 
+
 RSpec.describe "dash dot" do
     it "deberia devolver el la orientacion N del auto creado si le pasamos 'N' '1,2'" do
         expect(Auto.new('N',1,2).getOrientacion).to eq 'N' 
@@ -110,5 +111,14 @@ RSpec.describe "dash dot" do
         auto.girarIzquierda()
         expect(auto.getOrientacion).to eq 'N' 
     end
+
+    # it "deberia devolver 6 si le pasamos 6,5 1,2 N IAIA" do
+    #     expect(getLargo_de_Entrada("6,5 1,2 N IAIA")).to eq 6 
+    # end
+    # it "deberia devolver 5 si le pasamos 5,5 1,2 N IAIA" do
+    #     expect(getAlto_de_Entrada("6,5 1,2 N IAIA")).to eq 5 
+    # end
+
+    
     
 end
