@@ -1,6 +1,6 @@
 class Auto   
     # método inicializar clase
-    def initialize(orientacion, posicion_x,posicion_y)  
+    def initialize(orientacion, posicion_y,posicion_x)  
         # atributos           
         @orientacion = orientacion 
         @posicion_x=posicion_x
@@ -41,20 +41,20 @@ class Auto
     end
     def avanzar(limite_largo,limite_alto)
         case @orientacion
-            when 'N'
-                if(@posicion_y+1<=limite_alto)
+            when 'S'
+                if(@posicion_y+1<limite_alto)
                     @posicion_y=@posicion_y+1
                 end
-            when 'S'
-                if(@posicion_y-1>0)
+            when 'N'
+                if(@posicion_y-1>=0)
                     @posicion_y=@posicion_y-1
                 end
             when 'O'
-                if(@posicion_x-1>0)
+                if(@posicion_x-1>=0)
                     @posicion_x=@posicion_x-1
                 end
             when 'E'
-                if(@posicion_x+1<=limite_largo)
+                if(@posicion_x+1<limite_largo)
                     @posicion_x=@posicion_x+1
                 end
         end

@@ -17,10 +17,10 @@ post '/inicio' do
     @largo_tablero1=tablero.getLargo
     @alto_tablero1=tablero.getAlto
     
-    @pos_x_auto=@entrada.to_s.split(/\r\n/)[1].to_s.split(/,/)[0].to_i
-    @pos_y_auto=@entrada.to_s.split(/\r\n/)[1].to_s.split(/,/)[1].to_i
+    @pos_y_auto=@entrada.to_s.split(/\r\n/)[1].to_s.split(/,/)[0].to_i
+    @pos_x_auto=@entrada.to_s.split(/\r\n/)[1].to_s.split(/,/)[1].to_i
     @orientacion_auto=@entrada.to_s.split(/\r\n/)[1].to_s.split("\s")[1]
-    auto=Auto.new(@orientacion_auto,@pos_x_auto,@pos_y_auto)
+    auto=Auto.new(@orientacion_auto,@pos_y_auto,@pos_x_auto)
     @pos_x_auto1=auto.getPosicion_x
     @pos_y_auto1=auto.getPosicion_y
     @orientacion_auto1=auto.getOrientacion
