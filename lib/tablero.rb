@@ -6,9 +6,8 @@ class Tablero
         @alto = alto 
         @largo=largo
         @autos=Array.new
-        
-    end  
-   
+        @comandosAutos=[]
+    end
     def getAlto()
         return @alto
     end
