@@ -3,6 +3,15 @@
     <textarea name="campo_entrada" rows="7" cols="20"></textarea>
     <input type="submit" value="ejecutar">
 </form>
-<h3>Posicion Inicial:<%=@pos_y_auto1%>,<%=@pos_x_auto1%> <%=@orientacion_auto1%></h3>
-<h3>Comandos <%=@comandos1%></h3>
-<h3>Posicion Final:<%=@posyfinal%>,<%=@posxfinal%> <%=@orientacionfinal%></h3>
+
+
+<%i=0%>
+<% while i<@posyiniciales.length() do%>
+    <h2>Auto <%=i+1%>:</h2>
+    <h3>Posicion Inicial:<%=@posyiniciales[i]%>,<%=@posxiniciales[i]%> <%=@orientacioniniciales[i]%> </h3>
+    <h3>Comandos: <%=@comandos_vista[i]%></h3>  
+    <h3>Posicion Final:<%=@posyfinales[i]%>,<%=@posxfinales[i]%> <%=@orientacionfinales[i]%> </h3>
+    <%i=i+1%>
+<%end%>
+
+

@@ -5,10 +5,18 @@ class Auto
         @orientacion = orientacion 
         @posicion_x=posicion_x
         @posicion_y=posicion_y
-    end  
+        @comandos=nil
+    end
+    def addComando(comando)
+        @comandos=comando
+    end
+    def getComando()
+        return @comandos
+    end
     def getOrientacion()
         return @orientacion
     end
+
     def getPosicion_x()
         return @posicion_x
     end
@@ -39,22 +47,55 @@ class Auto
                 @orientacion='S'
         end
     end
-    def avanzar(limite_largo,limite_alto)
+    def avanzar(limite_largo,limite_alto,listaAutos)
+
         case @orientacion
             when 'S'
-                if(@posicion_y+1<limite_alto)
+                libre=true
+                listaAutos.each do |a|
+                    if(@posicion_x ==a.getPosicion_x && @posicion_y+1 == a.getPosicion_y) 
+                        libre=false
+                        break
+                    end
+                end
+
+                if(@posicion_y+1<limite_alto && libre)
                     @posicion_y=@posicion_y+1
                 end
             when 'N'
-                if(@posicion_y-1>=0)
+                libre=true
+                listaAutos.each do |a|
+                    if(@posicion_x ==a.getPosicion_x &&  @posicion_y-1 == a.getPosicion_y) 
+                        libre=false
+                        break
+                    end
+                end
+
+                if(@posicion_y-1>=0 && libre)
                     @posicion_y=@posicion_y-1
                 end
+
             when 'O'
-                if(@posicion_x-1>=0)
+                libre=true
+                listaAutos.each do |a|
+                    if(@posicion_x-1 ==a.getPosicion_x && @posicion_y == a.getPosicion_y) 
+                        libre=false
+                        break
+                    end
+                end
+
+                if(@posicion_x-1>=0 && libre)
                     @posicion_x=@posicion_x-1
                 end
             when 'E'
-                if(@posicion_x+1<limite_largo)
+                libre=true
+                listaAutos.each do |a|
+                    if(@posicion_x+1 ==a.getPosicion_x && @posicion_y == a.getPosicion_y) 
+                        libre=false
+                        break
+                    end
+                end
+                if(@posicion_x+1<limite_largo && libre)
                     @posicion_x=@posicion_x+1
                 end
         end
