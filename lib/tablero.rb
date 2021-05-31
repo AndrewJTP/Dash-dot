@@ -1,4 +1,5 @@
 require './lib/auto.rb'
+require './lib/obstaculo.rb'
 class Tablero   
     # método inicializar clase
     def initialize(largo, alto)  
@@ -6,7 +7,7 @@ class Tablero
         @alto = alto 
         @largo=largo
         @autos=Array.new
-        @comandosAutos=[]
+        @obstaculos=Array.new
     end
     def getAlto()
         return @alto
@@ -20,7 +21,7 @@ class Tablero
                 return true
             end            
         end
-        return auto.getPosicion_x>@largo||auto.getPosicion_y>@alto ||auto.getPosicion_x<1||auto.getPosicion_y<1
+        return auto.getPosicion_x>=@largo||auto.getPosicion_y>=@alto ||auto.getPosicion_x<0||auto.getPosicion_y<0
     end
     
     def addAuto(auto)
@@ -32,8 +33,14 @@ class Tablero
         end
         
     end
+    def getObstaculos()
+        return @obstaculos
+    end
+    def addObstaculo(obstaculo)
+        @obstaculos.push(obstaculo)
+        return true
+    end
     def getAutos()
         return @autos
     end
-
 end  

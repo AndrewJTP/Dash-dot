@@ -2,7 +2,7 @@ require 'sinatra'
 require './config'
 require './lib/auto.rb'
 require './lib/tablero.rb'
-
+require './lib/obstaculo.rb'
 
 get '/' do
     erb :bienvenida
@@ -16,12 +16,17 @@ post '/inicio' do
     
     tablero=Tablero.new(@largo_tablero,@alto_tablero)
 
+    @pos_y_obstaculo=@entrada.to_s.split(/\r\n/)[1].to_s.split(/,/)[0].to_i
+    @pos_x_obstaculo=@entrada.to_s.split(/\r\n/)[1].to_s.split(/,/)[1].to_i
+    
+    obstaculo=Obstaculo.new(@pos_y_obstaculo,@pos_x_obstaculo)
+    tablero.addObstaculo(obstaculo)
 
     @largo_tablero1=tablero.getLargo
     @alto_tablero1=tablero.getAlto
     
 
-    i=1
+    i=2
     while @entrada.to_s.split(/\r\n/)[i] != nil  do
 
         @pos_y_auto=@entrada.to_s.split(/\r\n/)[i].to_s.split(/,/)[0].to_i
@@ -79,7 +84,7 @@ post '/inicio' do
 
         @comando.each do |c|
             if(c=="A")
-                a.avanzar(tablero.getLargo,tablero.getAlto,tablero.getAutos)
+                a.avanzar(tablero.getLargo,tablero.getAlto,tablero.getAutos,tablero.getObstaculos)
             end
             if(c=="I")
                 a.girarIzquierda
